@@ -1,0 +1,27 @@
+{
+  "name": "yourimages",
+  "version": "1.0.0",
+  "description": "Image search abstraction layer exercise for freeCodeCamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lcneves/yourimages.git"
+  },
+  "keywords": [
+    "image",
+    "search",
+    "freeCodeCamp"
+  ],
+  "author": "Lucas Neves",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lcneves/yourimages/issues"
+  },
+  "homepage": "https://github.com/lcneves/yourimages#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}

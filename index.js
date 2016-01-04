@@ -30,15 +30,19 @@ app.get('/api/imagesearch/*', function(req, res) {
             if (data.error) {
                 res.send({error: data.error});
             } else {
-                data.items.forEach(function(element, index, array) {
-                    answer.push({
-                        url: element.link,
-                        snippet: element.snippet,
-                        thumbnail: element.image.thumbnailLink,
-                        context: element.image.contextLink
+                if(data.items) {
+                    data.items.forEach(function(element, index, array) {
+                        answer.push({
+                            url: element.link,
+                            snippet: element.snippet,
+                            thumbnail: element.image.thumbnailLink,
+                            context: element.image.contextLink
+                        });
                     });
-                });
-                res.send(answer);
+                    res.send(answer);
+                } else {
+                    res.send({error: 'No results found.'});
+                }
             }
         });
     });

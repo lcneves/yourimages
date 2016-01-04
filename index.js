@@ -4,8 +4,7 @@ var GCS_API_KEY = 'AIzaSyBrQcPqgRaTobJayI3i-hASr92NONPiask',
     latestQueries = [],
     https = require('https'),
     express = require('express'),
-    app = express(),
-    util = require('util');
+    app = express();
 
 app.get('/', function (req, res) {
     res.send('Usage: go to ' + req.headers.host + '/api/imagesearch/{your query} to get a JSON with results from Google Image Search. Optionally, add "?offset={number}" to paginate. Get a JSON with the latest 10 queries at ' + req.headers.host + '/api/latest/imagesearch.');
@@ -16,7 +15,6 @@ app.get('/api/latest/imagesearch', function(req, res) {
 });
 
 app.get('/api/imagesearch/*', function(req, res) {
-//    var query = req.path.slice(17);
     var search = req.params[0];
     var offset = req.query.offset ? req.query.offset * 10 + 1 : 1;
     var url = 'https://www.googleapis.com/customsearch/v1?q=' + search + '&cx=' + GCS_CX + '&num=10&searchType=image&start=' + offset + '&key=' + GCS_API_KEY;
@@ -52,19 +50,3 @@ app.get('/api/imagesearch/*', function(req, res) {
 app.listen(PORT, function() {
     console.log('Start listening on port ' + PORT);
 });
-
-/*
-<script>
-  (function() {
-    var cx = '008372849643028676407:wkc21kbf7ri';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:search></gcse:search>
-*/
